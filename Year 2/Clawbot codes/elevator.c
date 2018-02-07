@@ -14,6 +14,9 @@ task main()
 		//back wheels
 		motor[rightMotor]  = (vexRT[Ch2] + vexRT[Ch1])/2;
 		motor[leftMotor] = (vexRT[Ch2] - vexRT[Ch1])/2;
+		//rails
+		motor[rightRail]  = (vexRT[Ch3] + vexRT[Ch4])/2;
+		motor[leftRail] = (vexRT[Ch3] - vexRT[Ch4])/2;
 
 		// right rail
 		if(vexRT[Btn5D] == 1)       	//If 5U is pressed
