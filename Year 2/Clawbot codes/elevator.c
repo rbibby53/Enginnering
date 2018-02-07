@@ -15,7 +15,7 @@ task main()
 		motor[rightMotor]  = (vexRT[Ch2] + vexRT[Ch1])/2;
 		motor[leftMotor] = (vexRT[Ch2] - vexRT[Ch1])/2;
 		//rails
-		motor[rightRail]  = (vexRT[Ch3] + vexRT[Ch4])/2;
-		motor[leftRail] = (vexRT[Ch3] - vexRT[Ch4])/2;
+		motor[rightRail]  = (vexRT[Ch3])/2;
+		motor[leftRail] = (vexRT[Ch3])/2;
 	}
 }
