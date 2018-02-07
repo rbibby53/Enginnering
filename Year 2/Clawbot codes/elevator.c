@@ -17,32 +17,5 @@ task main()
 		//rails
 		motor[rightRail]  = (vexRT[Ch3] + vexRT[Ch4])/2;
 		motor[leftRail] = (vexRT[Ch3] - vexRT[Ch4])/2;
-
-		// right rail
-		if(vexRT[Btn5D] == 1)       	//If 5U is pressed
-		{
-			motor[rightRail] = 127;    	//raise arm.
-		}
-		else if(vexRT[Btn5U] == 1)  	//if 5D is pressed
-		{
-			motor[rightRail] = -75;   	//lower arm
-		}
-		else                      		//neither is pressed
-		{
-			motor[rightRail] = 0;      	//hold arm
-		}
-		//left rail
-		if(vexRT[Btn5D] == 1)       	//If 5U is pressed
-		{
-			motor[leftRail] = 127;    	//raise arm.
-		}
-		else if(vexRT[Btn5U] == 1)  	//if 5D is pressed
-		{
-			motor[leftRail] = -75;   	//lower arm.
-		}
-		else                      		//neither is pressed
-		{
-			motor[leftRail] = 0;      	//hold arm
-		}
 	}
 }
