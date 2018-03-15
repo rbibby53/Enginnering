@@ -12,16 +12,17 @@ task main()
 
 		if (SensorValue[linefollow] > 2000 )     
 		{
-			setServo(turntable, 127);           
+			setServo(turntable, 75);           
 		}
 		else                                  
 		{
-			setServo(turntable, -127);           
+			setServo(turntable, -75);           
 		}
-		wait(5);                            
+		wait(7);           
+		
 
 		setServo(feedmotor,-127);           
-		wait(2);                            
+		wait(3);                            
 		setServo(feedmotor,127);             
 
 	}
