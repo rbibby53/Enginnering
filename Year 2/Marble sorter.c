@@ -38,5 +38,3 @@ task main()
 		turnLEDOff(yellow);
 	}
 }
-
-test
