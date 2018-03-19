@@ -12,7 +12,6 @@ task main()
 	turnFlashlightOn(flashlight, -127);
 	while (true)
 	{
-
 		if (SensorValue[linefollow] > 2000 )
 		{
 			setServo(turntable, 75);
@@ -26,10 +25,9 @@ task main()
 			turnLEDOn(red);
 			wait(1);
 			turnLEDOff(red);
-
 		}
+		
 		wait(7);
-
 
 		setServo(feedmotor,-127);
 		turnLEDOn(yellow);
