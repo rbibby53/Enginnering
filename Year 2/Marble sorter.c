@@ -43,8 +43,8 @@ task main()
 		setServo(turntable, 0);
 		wait1Msec(200);
 
-		setServo(feedmotor,-127);
 		turnLEDOn(yellow);
+		setServo(feedmotor,-127);
 		wait1Msec(750);
 		setServo(feedmotor,127);
 		turnLEDOff(yellow);
