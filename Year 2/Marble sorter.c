@@ -13,20 +13,20 @@ task main()
 	while (true)
 	{
 		turnFlashlightOn(flashlight, 127);
-		wait1Msec(750);
-		
+		wait1Msec(700);
+
 		if (SensorValue[linefollow] > 2000 )
 		{
-			setServo(turntable, 75);
 			turnLEDOn(green);
-			wait(1);
+			setServo(turntable, 75);
+			wait1Msec(700);
 			turnLEDOff(green);
 		}
 		else
 		{
-			setServo(turntable, -75);
 			turnLEDOn(red);
-			wait(1);
+			setServo(turntable, -75);
+			wait1Msec(700);
 			turnLEDOff(red);
 		}
 
@@ -38,13 +38,14 @@ task main()
 		wait(1);
 		setServo(stopper, -127);
 		wait1Msec(200);
+		wait(3);
 
 		setServo(turntable, 0);
 		wait1Msec(200);
 
 		setServo(feedmotor,-127);
 		turnLEDOn(yellow);
-		wait(1);
+		wait1Msec(750);
 		setServo(feedmotor,127);
 		turnLEDOff(yellow);
 	}
