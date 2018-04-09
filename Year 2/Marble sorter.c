@@ -30,17 +30,18 @@ task main()
 			turnLEDOff(red);
 		}
 
-		wait1Msec(500);
+		wait1Msec(100);
 		turnFlashlightOff(flashlight);
 
-		wait1Msec(500);
+		wait1Msec(100);
 		setServo(stopper, 127);
-		wait(1);
+		wait(2);
 		setServo(stopper, -127);
-		wait1Msec(200);
+		wait1Msec(100);
 
+		wait1Mesc(100);
 		setServo(turntable, 0);
-		wait1Msec(200);
+		wait1Msec(150);
 
 		turnLEDOn(yellow);
 		startMotor(feedmotor, 60);
