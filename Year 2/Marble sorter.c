@@ -10,7 +10,7 @@
 
 task main()
 {
-	while (true)
+	while (1 == 1)
 	{
 		turnFlashlightOn(flashlight, 127);
 		wait1Msec(700);
@@ -38,15 +38,14 @@ task main()
 		wait(1);
 		setServo(stopper, -127);
 		wait1Msec(200);
-		wait(3);
 
 		setServo(turntable, 0);
 		wait1Msec(200);
 
 		turnLEDOn(yellow);
-		setServo(feedmotor,-127);
-		wait1Msec(750);
-		setServo(feedmotor,127);
+		startMotor(feedmotor, 60);
+		wait1Msec(890);
+		stopMotor(feedmotor);
 		turnLEDOff(yellow);
 	}
 }
