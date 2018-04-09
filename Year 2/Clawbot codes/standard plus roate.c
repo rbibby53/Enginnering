@@ -15,10 +15,10 @@ task main()
 
 	while(1 == 1)
 	{
-		//wheels
+		//front wheels
 		motor[leftMotor]  = (vexRT[Ch2] + vexRT[Ch1])/2;
 		motor[rightMotor] = (vexRT[Ch2] - vexRT[Ch1])/2;
-		//wheels
+		//back wheels
 		motor[leftBack]  = (vexRT[Ch2] + vexRT[Ch1])/2;
 		motor[rightBack] = (vexRT[Ch2] - vexRT[Ch1])/2;
 		
