@@ -13,7 +13,7 @@ task main()
 	while (1 == 1)
 	{
 		turnFlashlightOn(flashlight, 127);
-		wait1Msec(700);
+		wait(5);
 
 		if (SensorValue[linefollow] > 2000 )
 		{
