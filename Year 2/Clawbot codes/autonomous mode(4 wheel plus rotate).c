@@ -25,10 +25,20 @@ void pre_auton()
 
 task autonomous()
 {
-startMotor(leftMotor, 127);
+startMotor(leftMotor, 127);//go fword
 startMotor(rightMotor, 127);
-wait(5);
-stopMotor(rightMotor);
+wait(5);//wait 5
+stopMotor(rightMotor);//stop
+stopMotor(leftMotor);
+startMotor(leftMotor, 127);//turn right
+startMotor(rightMotor, -127);
+wait(2);//wait 2
+stopMotor(rightMotor);//stop
+stopMotor(leftMotor);
+wait(1);//wait 1
+startMotor(leftMotor, 127);//go fword
+startMotor(rightMotor, 127);
+stopMotor(rightMotor);//stop
 stopMotor(leftMotor);
 }
 
