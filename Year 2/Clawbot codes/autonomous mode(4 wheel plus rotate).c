@@ -18,12 +18,10 @@
 
 void pre_auton()
 {
-
 	bStopTasksBetweenModes = true;
-
 }
 
-//Autonomous Task
+//Autonomous
 
 task autonomous()
 {
@@ -34,7 +32,7 @@ stopMotor(rightMotor);
 stopMotor(leftMotor);
 }
 
-//User Control Task
+//User Control
 
 task usercontrol()
 {
