@@ -1,3 +1,4 @@
+#pragma config(Sensor, dgtl1,  Encoder,        sensorQuadEncoder)
 #pragma config(Motor,  port2,           leftMotor,     tmotorVex393_MC29, openLoop, driveLeft)
 #pragma config(Motor,  port3,           rightMotor,    tmotorVex393_MC29, openLoop, driveRight)
 #pragma config(Motor,  port4,           rotate,        tmotorVex393_MC29, openLoop, reversed)
@@ -18,6 +19,7 @@
 void pre_auton()
 {
 	bStopTasksBetweenModes = false;
+	SensorValue[Encoder] = 0;   //Clear the left encoder value
 }
 
 //Autonomous
@@ -34,7 +36,6 @@ task autonomous()
 		motor[leftMotor] = 63;
 	}
 
-
 	//Stop for half a second
 	motor[rightMotor] = 0;
 	motor[leftMotor] = 0;
@@ -49,6 +50,10 @@ task autonomous()
 		motor[rightMotor] = -63;
 		motor[leftMotor] = 63;
 	}
+	SensorValue[Encoder] = 0;
+	//stop
+	motor[rightMotor] = 0;
+	motor[leftMotor] = 0;
 }
 
 //User Control
