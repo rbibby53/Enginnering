@@ -24,23 +24,30 @@ void pre_auton()
 
 task autonomous()
 {
-	while (1 == 1)
+	SensorValue[Encoder] = 0;   //Clear the left encoder value
+
+	//While the encoders have spun less than 3 rotations...
+	while(SensorValue[Encoder] < 1080)
 	{
-		startMotor(leftMotor, 127);//go fword
-		startMotor(rightMotor, 127);
-		wait(5);//wait 5
-		stopMotor(rightMotor);//stop
-		stopMotor(leftMotor);
-		startMotor(leftMotor, 127);//turn right
-		startMotor(rightMotor, -127);
-		wait(2);//wait 2
-		stopMotor(rightMotor);//stop
-		stopMotor(leftMotor);
-		wait(1);//wait 1
-		startMotor(leftMotor, 127);//go fword
-		startMotor(rightMotor, 127);
-		stopMotor(rightMotor);//stop
-		stopMotor(leftMotor);
+		//Move Forward
+		motor[rightMotor] = 63;
+		motor[leftMotor] = 63;
+	}
+
+
+	//Stop for half a second
+	motor[rightMotor] = 0;
+	motor[leftMotor] = 0;
+	wait1Msec(500);
+
+	SensorValue[Encoder] = 0;   //Clear the left encoder value
+
+	//While the right encoder has spun less than 1 rotation...
+	while(SensorValue[Encoder] < 360)
+	{
+		//Turn Left
+		motor[rightMotor] = -63;
+		motor[leftMotor] = 63;
 	}
 }
 
