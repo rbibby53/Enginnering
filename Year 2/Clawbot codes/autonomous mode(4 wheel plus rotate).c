@@ -26,36 +26,32 @@ void pre_auton()
 
 task autonomous()
 {
-	SensorValue[Encoder] = 0;   //Clear the left encoder value
 
-	//While the encoders have spun less than 3 rotations...
-	while(SensorValue[Encoder] < 1080)
-	{
-		//Move Forward
-		motor[rightMotor] = 63;
-		motor[leftMotor] = 63;
-	}
+SensorValue[Encoder] = 0;   //Clear the left encoder value
 
-	//Stop for half a second
-	motor[rightMotor] = 0;
-	motor[leftMotor] = 0;
-	wait1Msec(500);
+  //While the encoders have spun less than 3 rotations...
+  while(SensorValue[Encoder] < 1080)
+  {
+    //Move Forward
+    motor[rightMotor] = 63;
+    motor[leftMotor] = 63;
+  }
 
-	SensorValue[Encoder] = 0;   //Clear the left encoder value
+  //Stop for half a second
+  motor[rightMotor] = 0;
+  motor[leftMotor] = 0;
+  wait1Msec(500);
 
-	//While the right encoder has spun less than 1 rotation...
-	while(SensorValue[Encoder] < 360)
-	{
-		//Turn Left
-		motor[rightMotor] = -63;
-		motor[leftMotor] = 63;
-	}
-	SensorValue[Encoder] = 0;
-	//stop
-	motor[rightMotor] = 0;
-	motor[leftMotor] = 0;
+SensorValue[Encoder] = 0;   //Clear the left encoder value
+
+  //While the right encoder has spun less than 1 rotation...
+  while(SensorValue[Encoder] < 360)
+  {
+    //Turn Left
+    motor[rightMotor] = -63;
+    motor[leftMotor] = 63;
+  }
 }
-
 //User Control
 
 task usercontrol()
