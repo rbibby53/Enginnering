@@ -8,14 +8,37 @@
 
 task main()
 {
-
 	while(1 == 1)
 	{
-		//back wheels
-		motor[rightMotor]  = (vexRT[Ch2] + vexRT[Ch1])/2;
-		motor[leftMotor] = (vexRT[Ch2] - vexRT[Ch1])/2;
-		//rails
-		motor[rightRail]  = (vexRT[Ch3])/2;
-		motor[leftRail] = (vexRT[Ch3])/2;
+		//right joy
+		motor[leftMotor]  = (vexRT[Ch2] + vexRT[Ch1])/2;
+		//left joy
+		motor[rightMotor] = (vexRT[Ch3] - vexRT[Ch4])/2;
+		// right rail
+		if(vexRT[Btn7U] == 1)       	//If 6U is pressed
+		{
+			motor[rightRail] = 127;  		//close claw
+		}
+		else if(vexRT[Btn7D] == 1)  	//if 6D is pressed
+		{
+			motor[rightRail] = -127; 		//open claw
+		}
+		else                      		//if neather is pressed
+		{
+			motor[rightRail] = 0;    		//do nothing with claw
+		}
+		//left rail
+		if(vexRT[Btn7U] == 1)       	//If 6U is pressed
+		{
+			motor[leftRail] = 127;  		//close claw
+		}
+		else if(vexRT[Btn7D] == 1)  	//if 6D is pressed
+		{
+			motor[leftRail] = -127; 		//open claw
+		}
+		else                      		//if neather is pressed
+		{
+			motor[leftRail] = 0;    		//do nothing with claw
+		}
 	}
 }
