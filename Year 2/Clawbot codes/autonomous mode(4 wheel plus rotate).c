@@ -25,9 +25,9 @@ void pre_auton()
 
 task autonomous()
 {
-set i = 0;
-while (i<=1);
-{
+int repeatThisNumberOfTimes = 1; //this is how many times to repeat
+
+for (int i = 0; i < repeatThisNumberOfTimes; i++){
 SensorValue[Encoder] = 0;   //Clear the left encoder value
 
 
@@ -58,9 +58,7 @@ SensorValue[Encoder] = 0;   //Clear the left encoder value
 	motor[rightMotor] = 0;
 	motor[leftMotor] = 0;
 }
-++i
 }
-
 
 //User Control
 
