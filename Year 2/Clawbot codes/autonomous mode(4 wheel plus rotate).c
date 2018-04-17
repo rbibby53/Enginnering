@@ -19,6 +19,7 @@
 void pre_auton()
 {
 	bStopTasksBetweenModes = false;
+	SensorValue[Encoder] = 0;   //Clear the left encoder value
 }
 
 //Autonomous
@@ -26,17 +27,16 @@ void pre_auton()
 task autonomous()
 {
 int repeatThisNumberOfTimes = 1; //this is how many times to repeat
-
 for (int i = 0; i < repeatThisNumberOfTimes; i++){
+	
 SensorValue[Encoder] = 0;   //Clear the left encoder value
-
 
 	//While the encoders have spun less than 3 rotations...
 	while(SensorValue[Encoder] < 1080)
 	{
 		//Move Forward
-		motor[rightMotor] = 63;
-		motor[leftMotor] = 63;
+		motor[rightMotor] = 127;
+		motor[leftMotor] = 127;
 	}
 
 	//Stop for half a second
@@ -52,8 +52,6 @@ SensorValue[Encoder] = 0;   //Clear the left encoder value
 		//Turn Left
 		motor[rightMotor] = -63;
 		motor[leftMotor] = 63;
-		wait(5);
-		SensorValue[Encoder] = 360;
 	}
 	motor[rightMotor] = 0;
 	motor[leftMotor] = 0;
