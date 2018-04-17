@@ -19,7 +19,6 @@
 void pre_auton()
 {
 	bStopTasksBetweenModes = false;
-	SensorValue[Encoder] = 0;   //Clear the left encoder value
 }
 
 //Autonomous
@@ -27,16 +26,17 @@ void pre_auton()
 task autonomous()
 {
 int repeatThisNumberOfTimes = 1; //this is how many times to repeat
+
 for (int i = 0; i < repeatThisNumberOfTimes; i++){
-	
 SensorValue[Encoder] = 0;   //Clear the left encoder value
+
 
 	//While the encoders have spun less than 3 rotations...
 	while(SensorValue[Encoder] < 1080)
 	{
 		//Move Forward
-		motor[rightMotor] = 127;
-		motor[leftMotor] = 127;
+		motor[rightMotor] = 63;
+		motor[leftMotor] = 63;
 	}
 
 	//Stop for half a second
@@ -52,6 +52,8 @@ SensorValue[Encoder] = 0;   //Clear the left encoder value
 		//Turn Left
 		motor[rightMotor] = -63;
 		motor[leftMotor] = 63;
+		wait(5);
+		SensorValue[Encoder] = 360;
 	}
 	motor[rightMotor] = 0;
 	motor[leftMotor] = 0;
@@ -62,8 +64,6 @@ SensorValue[Encoder] = 0;   //Clear the left encoder value
 
 task usercontrol()
 {
-	startTask(autonomous);
-	stopTask(usercontrol);
 
 	while (true)
 	{
@@ -88,6 +88,8 @@ task usercontrol()
 		{
 			motor[rotate] = 0;      	//do nothing
 		}
+		
+		//bumper
 		// arm
 		if(vexRT[Btn5U] == 1)       	//If 5U is pressed
 		{
@@ -101,7 +103,7 @@ task usercontrol()
 		{
 			motor[armMotor] = 10;      	//hold arm
 		}
-		// arm
+		// arm2
 		if(vexRT[Btn5U] == 1)       	//If 5U is pressed
 		{
 			motor[armMotor2] = 127;    	//raise arm.
@@ -109,6 +111,33 @@ task usercontrol()
 		else if(vexRT[Btn5D] == 1)  	//if 5D is pressed
 		{
 			motor[armMotor2] = -75;   	//lower arm
+		}
+		else                      		//neither is pressed
+		{
+			motor[armMotor2] = 10;      	//hold arm
+		}
+		//button
+			// arm
+		if(vexRT[Btn7U] == 1)       	//If 5U is pressed
+		{
+			motor[armMotor] = 60;    	//raise arm.
+		}
+		else if(vexRT[Btn7D] == 1)  	//if 5D is pressed
+		{
+			motor[armMotor] = -60;   	//lower arm
+		}
+		else                      		//neither is pressed
+		{
+			motor[armMotor] = 10;      	//hold arm
+		}
+		// arm2
+		if(vexRT[Btn5U] == 1)       	//If 5U is pressed
+		{
+			motor[armMotor2] = 63;    	//raise arm.
+		}
+		else if(vexRT[Btn5D] == 1)  	//if 5D is pressed
+		{
+			motor[armMotor2] = -63;   	//lower arm
 		}
 		else                      		//neither is pressed
 		{
