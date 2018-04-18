@@ -34,7 +34,7 @@ task autonomous()
 		//move arm motor
 		motor[armMotor] = 63;
 		motor[armMotor2] = 20;
-		wait1Msec(500);
+		wait1Msec(700);
 		//keep arm motor still
 		motor[armMotor] = 19;
 		motor[armMotor2] = 0;
@@ -56,13 +56,12 @@ task autonomous()
 		motor[clawMotor] = 127;
 		wait1Msec(1000);
 		motor[clawMotor] = 0;
-		//backup
-		wait1Msec(500);
-		motor[rightMotor] = -63;
-		motor[leftMotor] = -63;
-		wait(1);
-		motor[rightMotor] = 0;
-		motor[leftMotor] = 0;
+		//move back
+		while(SensorValue[Encoder] < 1000)
+		{
+			motor[rightMotor] = -63;
+			motor[leftMotor] = -63;
+		}
 	}
 }
 
@@ -70,8 +69,8 @@ task autonomous()
 
 task usercontrol()
 {
-	//startTask(autonomous);
-	//stopTask(usercontrol);
+	startTask(autonomous);
+	stopTask(usercontrol);
 	while (true)
 	{
 		//front wheels
