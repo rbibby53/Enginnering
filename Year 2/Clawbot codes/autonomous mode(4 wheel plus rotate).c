@@ -18,7 +18,7 @@
 
 void pre_auton()
 {
-	bStopTasksBetweenModes = false;
+	bStopTasksBetweenModes = true;
 }
 
 //Autonomous
@@ -69,8 +69,7 @@ task autonomous()
 
 task usercontrol()
 {
-	startTask(autonomous);
-	stopTask(usercontrol);
+	stopTask(autonomous)
 	while (true)
 	{
 		//front wheels
