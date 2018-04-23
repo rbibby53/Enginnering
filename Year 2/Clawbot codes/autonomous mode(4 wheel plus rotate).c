@@ -69,23 +69,20 @@ task autonomous()
 
 task usercontrol()
 {
-	stopTask(autonomous)
-	while (true)
+	stopTask(autonomous);
+	
+	while (1 == 1)
 	{
 		//front wheels
 		motor[leftMotor]  = (vexRT[Ch2] + vexRT[Ch1])/2;
 		motor[rightMotor] = (vexRT[Ch2] - vexRT[Ch1])/2;
 
-		//rotate fine
-		motor[rotate]  = (vexRT[Ch4] + vexRT[Ch4])/2;
-		motor[rotate] = (vexRT[Ch4] - vexRT[Ch4])/2;
-
-		//rotate fast
-		if(vexRT[Btn7L] == 1)       	//If 5U is pressed
+		//rotate 
+		if(vexRT[Btn7L] == 1)       	//If 7L is pressed
 		{
 			motor[rotate] = -100;    	//rotate
 		}
-		else if(vexRT[Btn7R] == 1)  	//if 5D is pressed
+		else if(vexRT[Btn7R] == 1)  	//if 5R is pressed
 		{
 			motor[rotate] = 100;   	//rotate
 		}
@@ -123,11 +120,11 @@ task usercontrol()
 		}
 		//button
 		// arm
-		if(vexRT[Btn7U] == 1)       	//If 5U is pressed
+		if(vexRT[Btn7U] == 1)       	//If 7U is pressed
 		{
 			motor[armMotor] = 60;    	//raise arm.
 		}
-		else if(vexRT[Btn7D] == 1)  	//if 5D is pressed
+		else if(vexRT[Btn7D] == 1)  	//if 7D is pressed
 		{
 			motor[armMotor] = -60;   	//lower arm
 		}
