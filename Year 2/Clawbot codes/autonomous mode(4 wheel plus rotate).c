@@ -1,4 +1,4 @@
-#pragma config(Sensor, dgtl1,  Encoder,        sensorQuadEncoder)
+#pragma config(Sensor, dgtl1,  jump,           sensorDigitalIn)
 #pragma config(Motor,  port2,           clawMotor,     tmotorVex393_MC29, openLoop)
 #pragma config(Motor,  port3,           rightMotor,    tmotorVex393_MC29, openLoop, driveRight)
 #pragma config(Motor,  port4,           rotate,        tmotorVex393_MC29, openLoop, reversed)
@@ -28,40 +28,35 @@ task autonomous()
 	int repeatThisNumberOfTimes = 1; //this is how many times to repeat
 
 	for (int i = 0; i < repeatThisNumberOfTimes; i++){
-		//clear encoder
-		SensorValue[Encoder] = 0;
-		motor[clawMotor] = -30;		
+
 		//move arm motor
 		motor[armMotor] = 63;
 		motor[armMotor2] = 20;
 		wait1Msec(700);
 		//keep arm motor still
-		motor[armMotor] = 19;
-		motor[armMotor2] = 0;
-		//While the encoder have spun less than 3 rotations
-		while(SensorValue[Encoder] < 1452)
-		{
-			//Move Forward
-			motor[rightMotor] = 63;
-			motor[leftMotor] = 63;
-		}
-		//Stop for half a second
+		motor[armMotor] = 15;
+		motor[armMotor2] = 10;
+		wait1Msec(200);
+		//Turn Right
+		motor[rightMotor] = -20;
+		motor[leftMotor] = 100;
+		wait1Msec(700);
+		//stop moving
+		motor[rightMotor] = 0;
+		motor[leftMotor] = 0;
+		wait1Msec(200);
+		//Move Forward
+		motor[rightMotor] = 100;
+		motor[leftMotor] = 100;
+		wait1Msec(1000);
+		//Stop moving
 		motor[rightMotor] = 0;
 		motor[leftMotor] = 0;
 		wait1Msec(500);
-		//clear encoder
-		SensorValue[Encoder] = 0;   //Clear the left encoder value
-		//open claw
-		wait1Msec(500);
-		motor[clawMotor] = 127;
-		wait1Msec(1000);
-		motor[clawMotor] = 0;
 		//move back
-		while(SensorValue[Encoder] < 1000)
-		{
-			motor[rightMotor] = -63;
-			motor[leftMotor] = -63;
-		}
+		motor[rightMotor] = -63;
+		motor[leftMotor] = -63;
+
 	}
 }
 
@@ -70,14 +65,17 @@ task autonomous()
 task usercontrol()
 {
 	stopTask(autonomous);
-	
+
 	while (1 == 1)
 	{
-		//front wheels
-		motor[leftMotor]  = (vexRT[Ch2] + vexRT[Ch1])/2;
-		motor[rightMotor] = (vexRT[Ch2] - vexRT[Ch1])/2;
+		//single control
+		//motor[leftMotor]  = (vexRT[Ch2] + vexRT[Ch1])/2;
+		//motor[rightMotor] = (vexRT[Ch2] - vexRT[Ch1])/2;
+		//tank control
+		motor[leftMotor]  = vexRT[Ch3];   // Left Joystick Y value
+   		motor[rightMotor] = vexRT[Ch2];   // Right Joystick Y value
 
-		//rotate 
+		//rotate
 		if(vexRT[Btn7L] == 1)       	//If 7L is pressed
 		{
 			motor[rotate] = -100;    	//rotate
