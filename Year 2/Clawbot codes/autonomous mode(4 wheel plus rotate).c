@@ -36,10 +36,11 @@ task usercontrol()
 {  
 	while (true)
 	{
-		//tank control
+		//Tank Control
+		//back control
 		motor[leftMotor]  = vexRT[Ch3];   // Left Joystick Y value
 		motor[rightMotor] = vexRT[Ch2];   // Right Joystick Y value
-		//tank control
+		//front control
 		motor[fLeftMotor]  = vexRT[Ch3];   // Left Joystick Y value
 		motor[fRightMotor] = vexRT[Ch2];   // Right Joystick Y value
 		//rotate
