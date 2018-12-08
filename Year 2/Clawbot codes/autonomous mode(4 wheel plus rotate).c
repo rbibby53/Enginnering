@@ -20,15 +20,15 @@ task autonomous()
 {
 motor[fRightMotor] = 127;
 motor[rightMotor] = 127;
-motor[fLeftMotor] = 125;
-motor[leftMotor] = 125;
+motor[fLeftMotor] = 127;
+motor[leftMotor] = 127;
 wait(1.8);
 
 motor[fRightMotor] = 0;
 motor[rightMotor] = 0;
 motor[fLeftMotor] = 0;
 motor[leftMotor] = 0;
-wait(.5);
+wait(0.5);
 
 motor[armMotor] = -100;
 wait(2);
@@ -49,8 +49,8 @@ wait(2.7);
 
 motor[fRightMotor] = 127;
 motor[rightMotor] = 127;
-motor[fLeftMotor] = 125;
-motor[leftMotor] = 125;
+motor[fLeftMotor] = 127;
+motor[leftMotor] = 127;
 wait(2);
 }
 
@@ -67,12 +67,12 @@ task usercontrol()
 		motor[fRightMotor] = vexRT[Ch2];   // Right Joystick Y value
 
 
-		if(vexRT[Btn6U] == 1)       //If 7U is pressed
+		if(vexRT[Btn6U] == 1)       //If 6U is pressed
 		{
 			motor[armMotor] = 100;    //raise arm.
 
 		}
-		else if(vexRT[Btn5U] == 1)  //if 7D is pressed
+		else if(vexRT[Btn6D] == 1)  //if 5D is pressed
 		{
 			motor[armMotor] = -100;   //lower arm
 
